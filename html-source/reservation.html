@@ -145,9 +145,10 @@ integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7
 integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/js/datepicker-full.min.js"></script>
 <script src="https://unpkg.com/notie"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
+ 
   // Example starter JavaScript for disabling form submissions if there are invalid fields
   (function() {
     'use strict';
@@ -172,10 +173,12 @@ const rangepicker = new DateRangePicker(elem, {
   format: "yyyy-mm-dd",
   minDate: "today"
 }); 
+ let attention = Prompt();
+ 
 document.getElementById("colorButton").addEventListener("click", function() {
- // notify("Hi I love Golang","error")
- notieAlerts("Hey","Hi johnny!","info","Say hey back")
-})
+  //notify("Hi I love Golang","success")
+  attention.toast({msg:"hello world"})
+});
 function notify(msg, msgType) {
   notie.alert({
     type: msgType,
@@ -189,6 +192,33 @@ function notieAlerts(title,text,icon,button) {
   icon: icon,
   button: button,
 });
+}
+function Prompt() {
+  let toast = function(p) {
+    const {
+      msg = '',
+      icon = 'success',
+      position = 'top-end',
+    } = p;
+    const Toast = Swal.mixin({
+  toast: true,
+  title: msg,
+  position: position,
+  icon: icon,
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+})
+
+Toast.fire({})
+  }
+    return {
+    toast:toast
+  }
 }
 
   </script>
