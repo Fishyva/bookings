@@ -177,7 +177,7 @@ const rangepicker = new DateRangePicker(elem, {
  
 document.getElementById("colorButton").addEventListener("click", function() {
   //notify("Hi I love Golang","success")
-  attention.toast({msg:"hello world"})
+  attention.error({msg:"hello world",title:"LOOK NOW"})
 });
 function notify(msg, msgType) {
   notie.alert({
@@ -216,8 +216,39 @@ function Prompt() {
 
 Toast.fire({})
   }
+  let success = function(p) {
+    const {
+      msg = '',
+      title = '',
+      footer = '',
+    } = p 
+    Swal.fire({
+  icon: 'success',
+  title: title,
+  text: msg,
+  footer: footer
+})
+  }
+  let error = function(p) {
+    const {
+      msg = '',
+      title = '',
+      footer = '',
+    } = p 
+    Swal.fire({
+  icon: 'error',
+  title: title,
+  text: msg,
+  footer: footer
+})
+  }
+  let custom = function(p) {
+    
+  }
     return {
-    toast:toast
+    toast:toast,
+    success:success,
+    error:error
   }
 }
 
