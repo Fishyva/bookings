@@ -47,3 +47,24 @@ func (m *Repository)About(w http.ResponseWriter, r *http.Request){
     })
 
 }
+//Reservations Handler to display form 
+func (m *Repository) Reservations(w http.ResponseWriter, r *http.Request) {
+   render.RenderTemplate(w,"make-reservation.page.html",&models.TemplateData{})
+}
+//Generals is a handler for the html template Generals
+func (m *Repository) Generals(w http.ResponseWriter, r *http.Request) {
+    render.RenderTemplate(w,"generals.page.html",&models.TemplateData{})
+ }
+ //Majors is a handler for html template Majors
+ func (m *Repository) Majors(w http.ResponseWriter, r *http.Request) {
+    render.RenderTemplate(w,"majors.page.html",&models.TemplateData{})
+ }
+// Availability is a method for rendering the search availibity template
+ func (m *Repository) Availability(w http.ResponseWriter, r *http.Request) {
+    render.RenderTemplate(w,"availability.page.html",&models.TemplateData{})
+ }
+
+ // Contact
+ func (m *Repository) Contact(w http.ResponseWriter, r *http.Request) {
+    render.RenderTemplate(w,"contact.page.html",&models.TemplateData{})
+ }
