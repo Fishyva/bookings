@@ -1,7 +1,9 @@
 package handlers
 
 import (
+	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 
 	"github.com/Fishyva/bookings/pkg/config"
@@ -65,12 +67,32 @@ func (m *Repository) Generals(w http.ResponseWriter, r *http.Request) {
  func (m *Repository) Availability(w http.ResponseWriter, r *http.Request) {
     render.RenderTemplate(w,r,"availability.page.html",&models.TemplateData{})
  }
-
+// PostAvailability submits our form request
  func (m *Repository) PostAvailability(w http.ResponseWriter, r *http.Request) {
     start := r.Form.Get("start")
     end := r.Form.Get("end")
 
     w.Write([]byte(fmt.Sprintf("start date is %s and end date is %s", start,end)))
+ }
+
+ type jsonResponse struct {
+     OK bool `json:"ok"`
+     Message string  `json:"message"`
+ }
+// AvailabilityJSON handles request for availability and handles JSON response
+ func (m *Repository) AvailabilityJSON(w http.ResponseWriter, r *http.Request) {
+   resp := jsonResponse{
+       OK: true,
+       Message: "Available!",
+   }
+   out,err := json.MarshalIndent(resp,"","     ")
+   if err != nil {
+       log.Println(err)
+   }
+ 
+   w.Header().Set("Content-Type","application/json")
+   w.Write(out)
+
  }
 
  // Contact
