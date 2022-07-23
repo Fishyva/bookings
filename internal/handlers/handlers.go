@@ -7,6 +7,7 @@ import (
 	"net/http"
 
 	"github.com/Fishyva/bookings/internal/config"
+	"github.com/Fishyva/bookings/internal/forms"
 	"github.com/Fishyva/bookings/internal/models"
 	"github.com/Fishyva/bookings/internal/render"
 )
@@ -53,8 +54,14 @@ func (m *Repository)About(w http.ResponseWriter, r *http.Request){
 }
 //Reservations Handler to display form 
 func (m *Repository) Reservations(w http.ResponseWriter, r *http.Request) {
-   render.RenderTemplate(w,r,"make-reservation.page.html",&models.TemplateData{})
+   render.RenderTemplate(w,r,"make-reservation.page.html",&models.TemplateData{
+    Form: forms.New(nil),
+   })
 }
+// PostReservation handles the posting of a reservation form
+func (m *Repository) PostReservations(w http.ResponseWriter, r *http.Request) {
+   
+ }
 //Generals is a handler for the html template Generals
 func (m *Repository) Generals(w http.ResponseWriter, r *http.Request) {
     render.RenderTemplate(w,r,"generals.page.html",&models.TemplateData{})
