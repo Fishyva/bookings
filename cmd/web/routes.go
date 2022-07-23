@@ -3,8 +3,8 @@ package main
 import (
 	"net/http"
 
-	"github.com/Fishyva/bookings/pkg/config"
-	"github.com/Fishyva/bookings/pkg/handlers"
+	"github.com/Fishyva/bookings/internal/config"
+	"github.com/Fishyva/bookings/internal/handlers"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 )

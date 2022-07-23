@@ -6,9 +6,9 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/Fishyva/bookings/pkg/config"
-	"github.com/Fishyva/bookings/pkg/models"
-	"github.com/Fishyva/bookings/pkg/render"
+	"github.com/Fishyva/bookings/internal/config"
+	"github.com/Fishyva/bookings/internal/models"
+	"github.com/Fishyva/bookings/internal/render"
 )
 
 

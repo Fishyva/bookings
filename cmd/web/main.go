@@ -6,9 +6,9 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/Fishyva/bookings/pkg/config"
-	"github.com/Fishyva/bookings/pkg/handlers"
-	"github.com/Fishyva/bookings/pkg/render"
+	"github.com/Fishyva/bookings/internal/config"
+	"github.com/Fishyva/bookings/internal/handlers"
+	"github.com/Fishyva/bookings/internal/render"
 	"github.com/alexedwards/scs/v2"
 )
 const portNumber = ":8080"
