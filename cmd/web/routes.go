@@ -9,7 +9,7 @@ import (
 	"github.com/go-chi/chi/v5/middleware"
 )
 //Routes is basically the paths for your site 
-func routes(app *config.AppConfig) http.Handler{
+func routes(app *config.AppConfig) http.Handler {
 
 	mux := chi.NewRouter()
 
