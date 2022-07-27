@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/gob"
 	"fmt"
 	"log"
 	"net/http"
@@ -8,6 +9,7 @@ import (
 
 	"github.com/Fishyva/bookings/internal/config"
 	"github.com/Fishyva/bookings/internal/handlers"
+	"github.com/Fishyva/bookings/internal/models"
 	"github.com/Fishyva/bookings/internal/render"
 	"github.com/alexedwards/scs/v2"
 )
@@ -17,7 +19,8 @@ var app config.AppConfig
 var session *scs.SessionManager
 
 func main(){
-   
+   //What will store in the session
+   gob.Register(models.Reservation{})
 
     //App Config inproduction mode
     app.InProduction = false

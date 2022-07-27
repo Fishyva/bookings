@@ -31,8 +31,8 @@ func routes(app *config.AppConfig) http.Handler {
 	mux.Get("/contact",handlers.Repo.Contact)
 
 	mux.Get("/make-reservation",handlers.Repo.Reservations)
-
 	mux.Post("/make-reservation",handlers.Repo.PostReservations)
+	mux.Get("/reservation-summary",handlers.Repo.ReservationSummary)
 	
 	// for go to allow html to find static things
 	fileServer := http.FileServer(http.Dir("./static/"))

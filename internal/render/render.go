@@ -12,15 +12,16 @@ import (
 	"github.com/Fishyva/bookings/internal/models"
 	"github.com/justinas/nosurf"
 )
-var functions = template.FuncMap{
-
-}
+var functions = template.FuncMap{}
 var app *config.AppConfig
 //New Template Sets the config for the template package
 func NewTemplate(a *config.AppConfig){
     app = a
 }
 func AddDefaultData(td *models.TemplateData,r *http.Request) *models.TemplateData {
+    td.Flash = app.Session.PopString(r.Context(), "flash")
+    td.Error = app.Session.PopString(r.Context(), "error")
+    td.Warning = app.Session.PopString(r.Context(), "warning")
     td.CSRFToken = nosurf.Token(r)
     return td
 }
