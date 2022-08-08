@@ -17,7 +17,7 @@ func TestRoutes(t *testing.T) {
 	case *chi.Mux:
 		// do nothing
 	default:
-		t.Error(fmt.Sprintf("type is not *chi.Mux, type is %T", v))	
-	
+		t.Error(fmt.Sprintf("type is not *chi.Mux, type is %T", v))
+
 	}
 }
